@@ -1,0 +1,29 @@
+---
+layout: post
+title: "Vim 🥷"
+date: 2022-11-01 04:20:00 +0530
+categories: vim
+---
+
+<img src="/assets/images/vim-bar.jpg" alt="vim-bar" width="200"/>
+
+I started using vim as my primary text editor about an year back. Then, I used to spend 80% of my time in remote shells within bastion (place where no remote server plugins helped connect my text editor to them log files; thanks to super awesome security settings 🙃). Slowly getting familiar to the vim movements and then gaining some of those vim superpowers was simply **AWESOME** 🚀
+
+![mind_blown_gif](/assets/images/boom-mind-blown.gif)
+
+But often there are a couple of vim shortcuts which are super handy but get used very less frequently in daily work.
+So, once their work is done, I end up forgetting those magic keys and when required the next time (_and since I know that there exists another way to get the task done in less keystrokes_), I end up spending most of my time trying to find what exactly those magic keys were.
+
+
+So I believe, it will be much easier to keep a note of those awesome shortcuts (below) and reference this list whenever I need it again.
+(For any other person reading this, you can use this as a _know about_ guide, but makes much more sense when you have used these earlier and just need to quikly reference these back; since subconscious mind will only remember that a solution exists, but not the solution itself!)
+
+| Task                                                                                                                                                      | Command/Key Combination                             |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| Remove line(s) which match a given pattern                                                                                                                | `:g/pattern-to-match/d`                             |
+| Remove line(s) which do not match a given pattern                                                                                                         | `:g!/pattern-to-match/d` or `:v/pattern-to-match/d` |
+| Change space to a new line _(mostly about getting that `^M` character (independent of os); for windows, it's ctrl+q instead of ctrl+v (as that is paste)_ | `:%s/ /<ctrl+v><enter>/g`                           |
+| Clear the last seach highlight                                                                                                                            | `:let @/=""`                                        |
+
+
+* _Above list is updated as and when new superpowers are unlocked_ 👾
