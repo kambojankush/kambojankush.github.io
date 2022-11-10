@@ -1,9 +1,11 @@
 ---
 layout: post
-title: "Vim 🥷"
+title: "Vim"
 date: 2022-11-01 04:20:00 +0530
 categories: vim
 ---
+
+🥷
 
 <img src="/assets/images/vim-bar.jpg" alt="vim-bar" width="200"/>
 
