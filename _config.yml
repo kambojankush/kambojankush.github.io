@@ -30,12 +30,10 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 minima:
   social_links:
-    github: kambojankush
-    linkedin: kambojankush
-    stackoverflow: "6770517"
-    gitlab: 
-      - username: kambojankush
-        instance: gitlab.com
+    - { platform: github, user_url: "https://github.com/kambojankush" }
+    - { platform: linkedin, user_url: "https://www.linkedin.com/in/kambojankush/"}
+    - { platform: stackoverflow, user_url: "https://stackoverflow.com/users/6770517/ankush"}
+    - { platform: gitlab, user_url: "https://gitlab.com/kambojankush"}
   skin: auto
 
 # Display post excerpts
