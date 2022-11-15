@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-> What the computer in virtual reality enables us to do is to recalibrate ourselves so that we can start seeing those pieces of information that are invisible to us but have become important for us to understand.
+> For a moment, nothing happened. Then, after a second or so, nothing continued to happen.
 
 Hello World! (:
 
