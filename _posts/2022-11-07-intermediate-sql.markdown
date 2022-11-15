@@ -33,7 +33,31 @@ g.) **Anti Join**: Returns values from the left relation that has no match with 
 
 
 ## 2. Nested Queries
-TODO:
+
+Nested queries are mostly used to execute a more complex logic within a single query. Although **nested queries are often difficult to optimize**.
+
+The scope of outer query is included in an inner query (i.e. the inner query can access attributes from outer query), but not the other way around.
+
+**In a worst case scenario, a nested query execution can happen once for each row of the parent query** --> Very costly execution.
+
+Inner queries can appear in almost any part of a query:
+1. `SELECT` output targets:
+```sql
+SELECT (SELECT 1) AS one FROM student;
+```
+
+2. `FROM` clause:
+```sql
+SELECT name
+    FROM student AS s, (SELECT sid FROM enrolled) AS e
+    WHERE s.sid = e.sid;
+```
+
+3. `WHERE` clause:
+```sql
+SELECT name FROM student
+    WHERE sid IN (SELECT sid FROM enrolled);
+```
 
 ## 3. Window Functions
 
@@ -59,7 +83,7 @@ ROWS | RANGE | GROUPS BETWEEN lower_bound AND upper_bound
 ```
 
 The ROWS, RANGE and GROUPS clauses limit the number of rows considered by the window function within a partition.
-* ROWS specifies a fixed number of rows that precede or follow the curret row.
+* ROWS specifies a fixed number of rows that precede or follow the current row.
 * RANGE / GROUPS logically limit the rows, i.e, they consider the rows based on their vlaue compared to the current row.
 
 Ref: 
@@ -67,3 +91,49 @@ Ref:
 - [Window Functions Cheatsheet](https://learnsql.com/blog/sql-window-functions-cheat-sheet/)
 - [Julia Kho post](https://towardsdatascience.com/a-guide-to-advanced-sql-window-functions-f63f2642cbf9)
 - [Window Frames](https://learnsql.com/blog/difference-between-rows-range-window-functions/)
+
+## 4. Common Table Expressions:
+
+_CTEs work as virtual tables (with records and columns), created during the execution of a query, used by the query, and eliminated after query execution. CTEs often act as a bridge to transform the data in source tables to the format expected by the query._
+
+eg:
+```sql
+WITH cteName AS (
+  SELECT 1
+)
+SELECT * FROM cteName;
+```
+
+We can bind output columns to names before the AS:
+```sql
+WITH cteName (col1, col2) AS (
+  SELECT 1, 2
+)
+SELECT col1, col2 FROM cteName
+```
+
+A single query may contain multiple CTE declarations:
+```sql
+WITH cteName1 (col1) AS (
+  SELECT 1
+),
+cteName2 (col2) AS (
+  SELECT 2
+)
+SELECT * FROM cteName1, cteName2;
+```
+
+**Adding the `RECURSIVE` keyword after the `WITH` clause allows a CTE to reference itself.**
+This enables the implementation of recusion in sql queries.
+_With recursive CTEs, SQL is provably turing complete, implying that it is as computationally expressive as more general purpose programming languages. (although a bit more cumbersome)._
+
+eg:
+```sql
+WITH RECURSIVE cte (counter) AS (
+  (SELECT 1)                        -- Base Condition
+  UNION
+  (SELECT counter + 1 FROM cte      -- Recusion call
+   WHERE counter < 10)              -- Termination condition
+ )
+ SELECT * from cte;
+```
