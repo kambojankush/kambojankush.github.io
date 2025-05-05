@@ -55,7 +55,6 @@ Below is an interactive chart comparing TFR across countries over time, with a f
 </script>
 {% endraw %}
 
-<br>
 **🗂 Sources:**
 [World Bank Indicator – Fertility Rate](https://datacatalog.worldbank.org/indicator/b199835d-eece-eb11-bacc-000d3a596ff0/Fertility-rate--total--births-per-woman-)
 [Health, Nutrition, and Population Statistics Dataset](https://datacatalog.worldbank.org/search/dataset/0037652/Health-Nutrition-and-Population-Statistics)
