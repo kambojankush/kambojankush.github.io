@@ -30,14 +30,24 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 minima:
   social_links:
-    - { platform: github, user_url: "https://github.com/kambojankush" }
-    - { platform: linkedin, user_url: "https://www.linkedin.com/in/kambojankush/"}
-    - { platform: stackoverflow, user_url: "https://stackoverflow.com/users/6770517/ankush"}
-    - { platform: gitlab, user_url: "https://gitlab.com/kambojankush"}
+    - title: Github Home
+      icon: github
+      url: "https://github.com/kambojankush"
+    - title: LinkedIn Home
+      icon: linkedin
+      url: "https://www.linkedin.com/in/kambojankush/"
+    - title: Stackoverflow
+      icon: stack-overflow
+      url: "https://stackoverflow.com/users/6770517/ankush"
+    - title: Gitlab Home
+      icon: gitlab
+      url: "https://gitlab.com/kambojankush"
+    - title: Goodreads
+      icon: goodreads-g
+      url: "https://www.goodreads.com/ankushkamboj"
   skin: auto
-
-# Display post excerpts
-show_excerpts: true
+  # Display post excerpts
+  show_excerpts: true
 
 # Build settings
 remote_theme: jekyll/minima
