@@ -2,7 +2,7 @@
 layout: post
 title:  "Numbers Don't Lie"
 date:   2025-05-05 21:45:00 +0530
-categories: books, data
+categories: books
 ---
 
 **Status**: In Progress
