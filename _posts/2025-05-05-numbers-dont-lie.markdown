@@ -183,3 +183,6 @@ So yes, sometimes numbers do lie—or at least, they hide more than they reveal.
     vizElement.parentNode.insertBefore(scriptElement, vizElement);
 </script>
 {% endraw %}
+
+**🗂 Sources:**
+* [World Bank: Life expectancy at birth, total (years)](https://datacatalog.worldbank.org/indicator/6fc20d68-bace-eb11-bacc-000d3a3b9510/Life-expectancy-at-birth--total--years-)
