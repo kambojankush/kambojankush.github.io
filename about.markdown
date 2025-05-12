@@ -25,9 +25,9 @@ _As git commits will remember_: Here's an attempt to learn and share; one day at
   <!-- Currently Reading -->
   <div class="widget" style="max-width: 280px; text-align: center;">
     <script
-      src="https://www.goodreads.com/review/custom_widget/117923135.Reading?cover_position=left&cover_size=medium&num_books=2&order=d&shelf=currently-reading&show_author=1&show_cover=1&show_rating=1&show_review=0&show_tags=0&show_title=1&sort=date_read&widget_bg_color=FFFFFF&widget_bg_transparent=&widget_border_width=2&widget_id=1746688781&widget_text_color=000000&widget_title_size=large&widget_width=full"
-      type="text/javascript"
-      charset="utf-8">
+        src="https://www.goodreads.com/review/custom_widget/117923135.Reading?cover_position=left&cover_size=medium&num_books=2&order=d&shelf=currently-reading&show_author=1&show_cover=1&show_rating=1&show_review=0&show_tags=0&show_title=1&sort=date_added&widget_bg_color=FFFFFF&widget_bg_transparent=&widget_border_width=1&widget_text_color=000000&widget_title_size=medium&widget_width=medium"
+        type="text/javascript"
+        charset="utf-8">
     </script>
   </div>
 
