@@ -199,6 +199,38 @@ So yes, sometimes numbers do lie—or at least, they hide more than they reveal.
 
 Distribution of happiness score based on various parameters.
 
+* **Happiness Score** is the national average response to the question of life evaluations. The English
+wording of the question is “Please imagine a ladder, with steps numbered from
+0 at the bottom to 10 at the top. The top of the ladder represents the best
+possible life for you and the bottom of the ladder represents the worst possible
+life for you. On which step of the ladder would you say you personally feel you
+stand at this time?”
+
+* The statistics of **GDP per capita** in purchasing power parity (PPP)
+
+* **Healthy Life Expectancy (HLE)** at birth are based on
+the data extracted from the World Health Organization’s (WHO) Global Health
+World Happiness Report 2025 Observatory data repository.
+
+* **Social support** (or having someone to count on in times of trouble) is the national
+average of the binary responses (either 0 or 1) to the GWP question “If you
+were in trouble, do you have relatives or friends you can count on to help you
+whenever you need them, or not?”
+
+* **Freedom to make life choices** is the national average of responses to the GWP
+question “Are you satisfied or dissatisfied with your freedom to choose what
+you do with your life?”
+
+* **Generosity** is the residual of regressing national average of response to the GWP
+question “Have you donated money to a charity in the past month?” on GDP
+per capita.
+
+* **Coruption Perception** measure is the national average of the survey responses to two questions in the GWP: “Is corruption widespread throughout
+the government or not” and “Is corruption widespread within businesses or
+not?” The overall perception is just the average of the two 0-or-1 responses.
+
+* **Dystopia residual** is "the Dystopia Happiness Score(1.85) + the Residual value or the unexplained value for each country"
+
 {% raw %}
 <div class="tableauPlaceholder" id="viz1747209126612" style="position: relative;">
     <noscript>
