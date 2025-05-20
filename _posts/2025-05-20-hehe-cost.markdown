@@ -1,0 +1,170 @@
+---
+layout: post
+title:  "HeHe Cost"
+date:   2025-05-20 14:45:00 +0530
+categories: vibe-coding
+---
+
+Vibe Coding a little light-weight tool to view cloud costs with a different lens 🔎.
+
+{% raw %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hehe Cost</title>
+  <style>
+    :root {
+      --primary: #71bda0;
+      --accent: #FFE5B4;
+      --bg: #FDFCFB;
+      --text: #2E2E2E;
+      --card-bg: #FFFFFF;
+      --highlight: #C0E0DE;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .main-container {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 0.5rem;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--primary);
+      font-size: 2rem;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 1.5rem;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 0.6rem;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: var(--primary);
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s ease;
+      margin-top: 1.5rem;
+    }
+
+    button:hover {
+      background-color: var(--highlight);
+    }
+
+    .results-container {
+      margin-top: 2rem;
+    }
+
+    .result {
+      background: var(--card-bg);
+      border-left: 6px solid var(--primary);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 0.6rem;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 0.5s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<div class="main-container">
+  <!-- <h2>☁️ Cloud Cost Equivalence</h2> --->
+
+  <label for="costInput">Cloud Cost (USD)</label>
+  <input type="number" id="costInput" placeholder="Enter your cloud cost ($)...">
+
+  <label for="frequencySelect">Frequency</label>
+  <select id="frequencySelect">
+    <option value="monthly">Monthly</option>
+    <option value="annually">Annually</option>
+  </select>
+
+  <button onclick="calculate()">Calculate Equivalents</button>
+
+  <div id="results" class="results-container"></div>
+
+  <script>
+    const equivalents = [
+      { name: "PS5 Console", cost: 499, minAnnualCost: 18000, description: "🎮 That's enough for {n} PS5 consoles. Gift one to every engineer?" },
+      { name: "Coldplay Concert Tickets", cost: 1151.43, minAnnualCost: 25000, description: "🦋⃤♡⃤🌈⃤ You could attend {n} Coldplay concerts... or better yet, sponsor one?" },
+      { name: "Mustang GT", cost: 47380, minAnnualCost: 600000, description: "🐎 You could buy {n} Ford Mustang GTs. Or just over-engineer your infra to drive itself." },
+      { name: "Mercedes Maybach", cost: 240500, minAnnualCost: 2886000, description: "㉦ You could get {n} Mercedes AMG Maybach S-Class. Just chill back and enjoy the comfort? Instead you chose to drive Kubernetes into a wall."},
+      { name: "Ferrari 296 GTB", cost: 320000, minAnnualCost: 3000000, description: "🛡️ That’s {n} Ferraris. You might not go faster, but you’ll feel cooler than autoscaling."},
+      { name: "F-16 Raptor", cost: 85000000, minAnnualCost: 300000000, description: "ᯓ ✈︎ You could own {n} F-16 fighter jet(s)! Or just shoot down that cloud bill." },
+      { name: "Netflix Subscription", cost: 240, minAnnualCost: 10000, description: "🎬🍿 {n} years of Netflix for your team. Or pay for engineers' therapy subscriptions." },
+      { name: "Gold-plated Toilet", cost: 2000000, minAnnualCost: 2000000, description: "🥇🚽 You could install {n} gold-plated toilets. For your cloud cost dump." },
+      { name: "Goat", cost: 120, minAnnualCost: 5000, description: "🐐 {n} goats. You could start a herd. Or a startup. Either works." },
+      { name: "Toilet Paper Roll", cost: 0.89, minAnnualCost: 15000, description: "🧻 You could buy {n} rolls of Toilet Paper. And still not wipe your cloud bill." },
+      { name: "Starbucks Coffee", cost: 3, minAnnualCost: 25000, description: "🧋 That’s {n} cups of coffee from starbucks. Enough caffeine to debug your cloud invoices line-by-line." },
+      { name: "Private Island", cost: 5000000, minAnnualCost: 5000000, description: "🏝️ You could buy {n} private island(s). Cloud-native and water-surrounded." },
+      { name: "Handkerchief", cost: 2.99, minAnnualCost: 14000, description: "🤧 You could buy {n} cotton handkerchiefs. No more runny noses, only costs?" },
+      { name: "Annual College Fee", cost: 35000, minAnnualCost: 50000, description: "🎓 You could send {n} students to college for a year in US. Or just teach your devs to shut down unused VMs." },
+      { name: "Mars Rover", cost: 2500000000, minAnnualCost: 5000000000, description: "🛰️👩‍🚀 You could almost launch {n} Mars rovers. From a cloud region on Mars." },
+      { name: "US GDP per capita", cost: 75000, minAnnualCost: 100000, description: "🇺🇸 Equivalent to covering {n} Americans' yearly income. Or just run your staging environment." },
+      { name: "iPhone", cost: 1199, minAnnualCost: 25000, description: " You could buy {n} iPhones. Or just call Apple and ask them to optimize your cloud bill." },
+      { name: "Tree Planting", cost: 300, minAnnualCost: 30000, description: "🌳 Plant {n} trees instead. At least your CO₂ emissions would balance out your cloud sins." },
+      { name: "Paperback Books", cost: 15, minAnnualCost: 30000, description: "📚 {n} books could be bought. Too bad no one read the cost breakdown documentation." },
+      { name: "Top Gun: Maverick Budget", cost: 170000000, minAnnualCost: 340000000, description: "✈ 🎬 Cloud costs = {n} X Top Gun budget. But your engineers still fly blind." },
+      { name: "SaaS CEO Annual Salary", cost: 1500000, minAnnualCost: 2000000, description: "👨🏻‍💼 You could pay {n} startup CEOs. Or just burn it on unused compute instead." },
+      { name: "AWS Support Plan (Enterprise Tier)", cost: 15000, minAnnualCost: 15000, description: "☸️ You could pay for {n} AWS Enterprise Support plans. But who needs support when you're YOLOing the infra?" },
+    ];
+
+    function calculate() {
+      const cost = parseFloat(document.getElementById('costInput').value);
+      const frequency = document.getElementById('frequencySelect').value;
+      const annualCost = frequency === 'monthly' ? cost * 12 : cost;
+
+      const eligible = equivalents
+        .filter(item => annualCost >= item.minAnnualCost)
+        .sort((a, b) => b.minAnnualCost - a.minAnnualCost)
+        .slice(0, 5);
+
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = '';
+
+      if (eligible.length === 0) {
+        resultsDiv.innerHTML = `<div class="result">😅 Hmm... you’re not burning <em>that</em> much yet. Keep trying!</div>`;
+        return;
+      }
+
+      eligible.forEach((item, index) => {
+        const count = Math.floor(annualCost / item.cost);
+        const desc = item.description.replace('{n}', count.toLocaleString());
+
+        const div = document.createElement('div');
+        div.className = 'result';
+        div.style.animationDelay = `${index * 0.1}s`;
+        div.innerHTML = `${desc}`;
+        resultsDiv.appendChild(div);
+      });
+    }
+  </script>
+</div>
+</html>
+
+{% endraw %}
