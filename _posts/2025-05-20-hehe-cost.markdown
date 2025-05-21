@@ -16,10 +16,58 @@ Vibe Coding a little light-weight tool to view cloud costs with a different lens
     :root {
       --primary: #71bda0;
       --accent: #FFE5B4;
-      --bg: #FDFCFB;
-      --text: #2E2E2E;
-      --card-bg: #FFFFFF;
-      --highlight: #C0E0DE;
+    }
+
+    /* Light theme (default) */
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #FDFCFB;
+        --text: #2E2E2E;
+        --card-bg: #FFFFFF;
+        --highlight: #C0E0DE;
+      }
+      button {
+        background-color: var(--primary);
+        color: #000;
+      }
+
+      button:hover {
+        background-color: var(--highlight);
+      }
+    }
+
+    /* Dark theme */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1E1E1E;
+        --text: #E0E0E0;
+        --card-bg: #2A2A2A;
+        --highlight: #3FA39E;
+      }
+
+      input, select, button {
+        border: 1px solid #444;
+        background-color: #333;
+        color: #E0E0E0;
+      }
+
+      input::placeholder {
+        color: #aaa;
+      }
+      
+      select {
+        background-color: #aaa;
+        color: #000;
+      }
+
+      button {
+        background-color: var(--primary);
+        color: #000;
+      }
+
+      button:hover {
+        background-color: var(--highlight);
+      }
     }
 
     * {
@@ -50,22 +98,15 @@ Vibe Coding a little light-weight tool to view cloud costs with a different lens
       width: 100%;
       padding: 0.75rem;
       margin-top: 0.5rem;
-      border: 1px solid #ccc;
       border-radius: 0.6rem;
       font-size: 1rem;
     }
 
     button {
-      background-color: var(--primary);
-      color: #000;
       cursor: pointer;
       font-weight: bold;
       transition: background 0.2s ease;
       margin-top: 1.5rem;
-    }
-
-    button:hover {
-      background-color: var(--highlight);
     }
 
     .results-container {
