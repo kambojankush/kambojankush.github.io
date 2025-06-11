@@ -1,13 +1,9 @@
 ---
 layout: post
 title:  "Numbers Don't Lie"
-date:   2025-05-05 21:45:00 +0530
+date:   2025-05-21 21:45:00 +0530
 categories: books
 ---
-
-**Status**: In Progress
-**Last Updated**: 2025-05-14
-
 
 While reading [*Numbers Don’t Lie*](https://www.goodreads.com/book/show/50705179-numbers-don-t-lie) by [*Vaclav Smil*](https://www.goodreads.com/author/show/5003.Vaclav_Smil), I found it packed with fascinating data and insights that highlight how the world really works. However, I noticed a gap: many of the global statistics don’t include country-specific numbers for India.
 
