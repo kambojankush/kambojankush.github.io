@@ -5,7 +5,7 @@ date:   2025-05-20 14:45:00 +0530
 categories: vibe-coding
 ---
 
-Vibe Coding a little light-weight tool to view cloud costs with a different lens 🔎.
+A little light-weight tool to view cloud costs with a different lens 🔎.
 
 {% raw %}
 <html lang="en">
